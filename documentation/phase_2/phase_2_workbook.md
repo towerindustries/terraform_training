@@ -23,10 +23,12 @@
       3. Security Group
          1. Permit SSH and 443 from your home public IP.
          2. Allow ICMP from your home IP.
-      4. Aws instance
+      4. Create a new resource "aws_key_pair".
+      5. Aws instance
          1. Requirements 
             1. 2 vCPUs 
             2. 4 GB Memory
             3. 30 GB Hard Drive Space
             4. Public IP ipV4 (bonus points for IPv6)
             5. Patch, update, and install docker on boot.
+            6. Use the new key_pair you created.

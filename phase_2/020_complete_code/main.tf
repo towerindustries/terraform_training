@@ -86,7 +86,13 @@ resource "aws_security_group" "example" {
   
   vpc_id = aws_vpc.example.id
 }
-
+#########################
+## Create the Key Pair ##
+#########################
+resource "aws_key_pair" "dev-example-key" {
+  key_name   = "dev-example-key"
+  public_key = "ssh-ed25519 <blah><blah><blah> myusername@terraform.com" // Update this with your public key.
+}
 ####################################
 ## Create the actual Ec2 Instance ##
 ####################################
