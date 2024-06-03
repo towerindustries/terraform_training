@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "5.52.0"
     }
   }
@@ -31,8 +31,8 @@ resource "aws_internet_gateway" "example" {
 ## Create the Subnet ##
 #######################
 resource "aws_subnet" "example" {
-  vpc_id     = aws_vpc.example.id
-  cidr_block = "10.0.1.0/24"
+  vpc_id            = aws_vpc.example.id
+  cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1a"
   tags = {
     Name = "dev-subnet"
@@ -69,26 +69,26 @@ resource "aws_route_table_association" "example" {
 #############################################
 resource "aws_security_group" "example" {
   name_prefix = "dev-ssh-access"
-  
+
   ingress {
-    from_port = 22
-    to_port   = 22
-    protocol  = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = ["66.0.0.97/32"] # Change this to your home ip
   }
-    ingress {
-    from_port = 80
-    to_port   = 80
-    protocol  = "tcp"
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["66.0.0.97/32"] # Change this to your home ip
   }
-    ingress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
     cidr_blocks = ["66.0.0.97/32"] # Change this to your home ip
   }
-   egress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -97,7 +97,7 @@ resource "aws_security_group" "example" {
   tags = {
     Name = "dev-security-group"
   }
-  
+
   vpc_id = aws_vpc.example.id
 }
 
@@ -106,13 +106,13 @@ resource "aws_security_group" "example" {
 ####################################
 resource "aws_instance" "example" {
   ami           = "ami-03a6eaae9938c858c" # Feed it the AMI you found
-  instance_type = "t2.micro"                # Choose the size/type of compute you want
-  key_name      = "dev-example-key"           # Here is the public key you want for ssh.
-  subnet_id     = aws_subnet.example.id       # Put it on the Subnet you created.
+  instance_type = "t2.micro"              # Choose the size/type of compute you want
+  key_name      = "dev-example-key"       # Here is the public key you want for ssh.
+  subnet_id     = aws_subnet.example.id   # Put it on the Subnet you created.
   tags = {
     Name = "dev-amazon2023"
-  }  
-  
+  }
+
   root_block_device {
     volume_size = 30    # If you wanted to increase the hard drive space here it is.
     volume_type = "gp3" # The type of storage you want to use.

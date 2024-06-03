@@ -1,8 +1,8 @@
 locals {
-  name              = "dev-amazon2023"
-  service_name      = "example"
-  environment       = "dev"
-  terraform_code    = "advanced_terraform_v2"
+  name           = "dev-amazon2023"
+  service_name   = "example"
+  environment    = "dev"
+  terraform_code = "advanced_terraform_v2"
 }
 locals {
   # Common tags to be assigned to all resources
@@ -14,10 +14,10 @@ locals {
   }
   environment_tags = merge(local.common_tags, {
     department = "devsecops"
-    owner             = "dev.at.saintcon.org"
+    owner      = "dev.at.saintcon.org"
   })
   network_tags = merge(local.common_tags, {
     department = "network-team"
-    owner             = "noc.at.saintcon.org"
+    owner      = "noc.at.saintcon.org"
   })
 }

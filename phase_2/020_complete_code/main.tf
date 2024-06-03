@@ -17,8 +17,8 @@ resource "aws_internet_gateway" "example" {
 ## Create the Subnet ##
 #######################
 resource "aws_subnet" "example" {
-  vpc_id     = aws_vpc.example.id
-  cidr_block = "10.0.1.0/24"
+  vpc_id            = aws_vpc.example.id
+  cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1a"
   tags = {
     Name = "dev-subnet"
@@ -55,26 +55,26 @@ resource "aws_route_table_association" "example" {
 #############################################
 resource "aws_security_group" "example" {
   name_prefix = "dev-ssh-access"
-  
+
   ingress {
-    from_port = 22
-    to_port   = 22
-    protocol  = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = ["66.0.0.97/32"] // change to your home public ip
   }
-    ingress {
-    from_port = 80
-    to_port   = 80
-    protocol  = "tcp"
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["66.0.0.97/32"] // change to your home public ip
   }
-    ingress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp" 
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
     cidr_blocks = ["66.0.0.97/32"] // change to your home public ip
   }
-   egress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -83,7 +83,7 @@ resource "aws_security_group" "example" {
   tags = {
     Name = "dev-security-group"
   }
-  
+
   vpc_id = aws_vpc.example.id
 }
 #########################
@@ -103,8 +103,8 @@ resource "aws_instance" "example" {
   subnet_id     = aws_subnet.example.id
   tags = {
     Name = "dev-amazon2023"
-  }  
-  
+  }
+
   root_block_device {
     volume_size = 30
     volume_type = "gp3"
