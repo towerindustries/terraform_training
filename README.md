@@ -49,9 +49,9 @@ outputs.tf
 
 /modules/
 ```
-github.com/towerindustries/saintcon23_modules.git//ami_amazon2023
-github.com/towerindustries/saintcon23_modules.git//networking
-github.com/towerindustries/saintcon23_modules.git//security_groups
-github.com/towerindustries/saintcon23_modules.git//ec2
+github.com/towerindustries/terraform_training_modules.git//ami_amazon2023
+github.com/towerindustries/terraform_training_modules.git//networking
+github.com/towerindustries/terraform_training_modules.git//security_groups
+github.com/towerindustries/terraform_training_modules.git//ec2
 
 ```
